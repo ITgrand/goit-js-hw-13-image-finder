@@ -1,46 +1,52 @@
-import cards from './templates/cards.hbs';
-import './css/styles.css';
-// == js files ==
-import NewApiService from './js/apiService.js';
-import refs from './js/refs.js';
-// ==== pnotify =====
-import { error } from '@pnotify/core';
+
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
+import { error } from '@pnotify/core';
+import cards from './templates/listCardMenu.hbs';
+import './css/styles.css';
+import NewApiService from './js/apiService.js';
+
+
+
+const refs = {
+  searchFormEl: document.getElementById('search-form'),
+  galerryListEl: document.querySelector('.gallery'),
+  searchBtnEl: document.querySelector('.searchBtn'),
+  searchMoreEl: document.querySelector('.searchMore'),
+};
 
 const newsApiService = new NewApiService();
 
-refs.searchForm.addEventListener('submit', onSearch);
-refs.searchMore.addEventListener('click', onLoadMore);
+refs.searchFormEl.addEventListener('submit', onSearch);
+refs.searchMoreEl.addEventListener('click', onBtnMore);
 
-function onSearch(e) {
-  e.preventDefault();
+function onSearch(evt) {
+  evt.preventDefault();
 
-  clearArticlesContainer();
-  newsApiService.query = e.currentTarget.elements.query.value;
+  clearOnSearchInput();
+  newsApiService.query = evt.currentTarget.elements.query.value;
 
   if (newsApiService.query === '') {
     return error({
-      title: 'Oh No!',
-      text: 'Something terrible happened.',
+      title: 'Введите пожалуйста запрос',
     });
   }
 
   newsApiService.fetchPictures().then(hits => {
     if (hits.length < 1) {
       return error({
-        text: 'Пожалуйста, введите что-то корректное',
+        text: 'Проверьте пожалуйста корректность запроса',
       });
     }
   });
 
   newsApiService.resetPage();
-  newsApiService.fetchPictures().then(appendArticlesMarkup);
+  newsApiService.fetchPictures().then(addGalleryList);
 }
 
-function onLoadMore() {
+function onBtnMore() {
   newsApiService.fetchPictures().then(hits => {
-    appendArticlesMarkup(hits);
+    addGalleryList(hits);
     scroll();
   });
 }
@@ -53,10 +59,10 @@ function scroll() {
   });
 }
 
-function appendArticlesMarkup(hits) {
-  refs.galerryList.insertAdjacentHTML('beforeend', cards(hits));
+function addGalleryList(hits) {
+  refs.galerryListEl.insertAdjacentHTML('beforeend', cards(hits));
 }
 
-function clearArticlesContainer() {
-  refs.galerryList.innerHTML = '';
+function clearOnSearchInput() {
+  refs.galerryListEl.innerHTML = '';
 }

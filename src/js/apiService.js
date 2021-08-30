@@ -1,11 +1,11 @@
-const MY_KEY = '22984759-30de173458e69cd83eb69d4b0';
+const MY_KEY = '23163904-8c80bcea9221614911235e8ca';
 const BASE_URL = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal';
 
 export default class NewApiService {
   constructor() {
-    this.searchQuery = '';
     this.page = 1;
     this.perPage = 12;
+    this.searchQuery = '';
   }
 
   fetchPictures() {
@@ -14,13 +14,13 @@ export default class NewApiService {
     return fetch(url)
       .then(response => response.json())
       .then(({ hits }) => {
-        this.incrementPage();
+        this.changePage();
 
         return hits;
       });
   }
 
-  incrementPage() {
+  changePage() {
     this.page += 1;
   }
 
