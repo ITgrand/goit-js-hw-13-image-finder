@@ -1,22 +1,22 @@
 {
-  "name": "goit-js-hw-13-image-finder",
+  "name": "parcel-project-template",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://ViacheslavSosnovskiy.github.io/goit-js-hw-13-image-finder",
+  "homepage": "https://github.com/ITgrand/goit-js-hw-13-image-finder",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-hw-13-image-finder/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ViacheslavSosnovskiy/goit-js-hw-13-image-finder.git"
+    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
   },
   "keywords": [],
-  "author": "Viacheslav Sosnovskiy <viacheslav.sosnovskiy@gmail.com>",
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ViacheslavSosnovskiy/goit-js-hw-13-image-finder/issues"
+    "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "devDependencies": {
     "@pnotify/core": "^5.2.0",
