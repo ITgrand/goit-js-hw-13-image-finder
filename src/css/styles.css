@@ -1,0 +1,68 @@
+body {
+  text-align: center;
+}
+
+.container {
+  padding-top: 30px;
+}
+
+.search-form {
+  margin-bottom: 30px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.photo-card {
+  border-radius: 6px;
+  border: 5px solid #000;
+  margin: 20px;
+  height: 250px;
+  width: 260px;
+}
+
+.photo-card:hover {
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 3px 7px 9px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+}
+
+.stats-item {
+  margin: 10px;
+}
+
+.photo-card:not(:lastchild) {
+  margin-right: 30px;
+}
+
+.photo-card img {
+  display: block;
+  height: 180px;
+  width: 260px;
+}
+
+button {
+  border: 2px solid #000;
+  background-color: #fff;
+  width: 150px;
+  height: 40px;
+}
+
+button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+input {
+  margin-right: 30px;
+  border: 2px solid #000;
+  width: 200px;
+  height: 34px;
+}
