@@ -139,14 +139,21 @@ body {
 
 .card-container {
   border-radius: 6px;
-  border: 5px solid #000;
+  border: 5px solid rgb(104, 96, 96);
   margin: 20px;
   height: 250px;
   width: 260px;
 }
 
+.card-container {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
 .card-container:hover {
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 3px 7px 9px;
+  box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 3px 7px 9px;
 }
 
 .card-container:not(:lastchild) {
