@@ -130,6 +130,10 @@ body {
   background-image: linear-gradient(top, #0483a0, #31b2c3);
 }
 
+.is-hidden {
+  display: none;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;

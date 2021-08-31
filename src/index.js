@@ -16,9 +16,12 @@ const refs = {
 };
 
 const newsApiService = new NewApiService();
+refs.searchMoreEl.classList.add('is-hidden');
+
 
 refs.searchFormEl.addEventListener('submit', onSearch);
 refs.searchMoreEl.addEventListener('click', onBtnMore);
+
 
 function onSearch(evt) {
   evt.preventDefault();
@@ -42,6 +45,7 @@ function onSearch(evt) {
 
   newsApiService.resetPage();
   newsApiService.fetchPictures().then(addGalleryList);
+  refs.searchMoreEl.classList.remove('is-hidden');
 }
 
 function onBtnMore() {
