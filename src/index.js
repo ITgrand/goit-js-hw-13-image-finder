@@ -16,15 +16,18 @@ const refs = {
 };
 
 const newsApiService = new NewApiService();
-refs.searchMoreEl.classList.add('is-hidden');
+
 
 
 refs.searchFormEl.addEventListener('submit', onSearch);
 refs.searchMoreEl.addEventListener('click', onBtnMore);
 
+hideBtnMore();
+
 
 function onSearch(evt) {
   evt.preventDefault();
+
 
   clearOnSearchInput();
   newsApiService.query = evt.currentTarget.elements.query.value;
@@ -33,6 +36,7 @@ function onSearch(evt) {
     return error({
       title: 'Введите пожалуйста запрос',
     });
+    hideBtnMore();
   }
 
   newsApiService.fetchPictures().then(hits => {
@@ -40,12 +44,14 @@ function onSearch(evt) {
       return error({
         text: 'Проверьте пожалуйста корректность запроса',
       });
+      hideBtnMore();
     }
   });
 
   newsApiService.resetPage();
   newsApiService.fetchPictures().then(addGalleryList);
-  refs.searchMoreEl.classList.remove('is-hidden');
+  showBtnMore();
+  
 }
 
 function onBtnMore() {
@@ -53,6 +59,14 @@ function onBtnMore() {
     addGalleryList(hits);
     scroll();
   });
+}
+
+function hideBtnMore() {
+  const hide = refs.searchMoreEl.classList.add('is-hidden');
+}
+
+function showBtnMore() {
+  const show = refs.searchMoreEl.classList.remove('is-hidden');
 }
 
 function scroll() {
